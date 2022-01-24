@@ -13,6 +13,11 @@ function Item(props){
     const hanldeCheck = (id, event) => {
         props.updateTodo(id, event.target.checked)
     }
+
+    const handleDelte = (id) => {
+        props.deleteTodo(id)
+    }
+
     return(
         <label>
             <li style={{backgroundColor:mouse ? "#ddd" : "white"}} onMouseLeave={() => handleMouse(false)} onMouseEnter={() => handleMouse(true)} onChange={(event) => hanldeCheck(props.id, event)}>
@@ -21,7 +26,7 @@ function Item(props){
                 {/*input ckeckbox是勾选类，defaultChecked状态表示默认是否勾选*/}
                 <span>{props.name}</span>
                 </label>
-                <button className="btn btn-danger" style={{display:mouse?"block":"none"}} >删除</button>
+                <button className="btn btn-danger" style={{display:mouse?"block":"none"}} onClick={() => handleDelte(props.id)}>删除</button>
             </li>
         </label>
     )
